@@ -18,9 +18,11 @@ public class Bird : MonoBehaviour
         GetComponent<LineRenderer>().SetPosition(1, _initialPosition);
         GetComponent<LineRenderer>().SetPosition(0, transform.position);
         if (_birdlaunced && GetComponent<Rigidbody2D>().velocity.magnitude < 0.1)
-            _timerest += Time.deltaTime; 
-        if (transform.position.y > 2.4 || transform.position.x > 14  || _timerest > 2)
-            SceneManager.LoadScene(0);
+            _timerest += Time.deltaTime;
+
+        string currentLevelName = SceneManager.GetActiveScene().name;
+        if (transform.position.y > 2.4 || transform.position.x > 14 || transform.position.x < -20 || _timerest > 2)
+            SceneManager.LoadScene(currentLevelName);
     }
     
     private void OnMouseDown()

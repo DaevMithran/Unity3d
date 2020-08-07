@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-  
+    //[SerializeField] private GameObject _cloudPrefab;
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         Animator anim = GetComponent<Animator>();
@@ -12,6 +13,7 @@ public class Enemy : MonoBehaviour
         if (hit!=null)
         {
             //GameObject.Destroy(gameObject);
+            //Instantiate(_cloudPrefab, transform.position,Quaternion.identity);
             anim.SetTrigger("Die");
             return;
         }
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour
 
         if (collision.contacts[0].normal.y < -0.5)
         {
+            //Instantiate(_cloudPrefab, transform.position, Quaternion.identity);
             //GameObject.Destroy(gameObject);
             anim.SetTrigger("Die");
             return;
